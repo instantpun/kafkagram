@@ -1,0 +1,14 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kafka-cluster:*"
+            ],
+            "Resource": [
+                "arn:aws:kafka:AWS_REGION:AWS_ACCOUNT_ID:*/MSK_CLUSTER_NAME/*"
+            ]
+        }
+    ]
+}
