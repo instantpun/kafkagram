@@ -23,8 +23,8 @@ for ((i=1;i<=COUNT;++i)); do
     --pod demo-cluster \
     --replace \
     --detach \
-    --name go-consumer$i \
-    localhost/go-consumer:0.1.1 localhost:9092 group1 topic1
+    --name "go-consumer$i" \
+    localhost/go-consumer:0.1.1 localhost:9092 group1 "go-consumer$i" topic1
 
 done
 

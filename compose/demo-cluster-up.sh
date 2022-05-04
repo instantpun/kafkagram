@@ -35,6 +35,7 @@ fi
 
 #############################
 ./start-provisioner.sh
-./start-consumers.sh 3
+sleep 3
+./start-consumers.sh 2
 ./start-producer.sh
 

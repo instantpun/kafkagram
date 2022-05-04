@@ -39,8 +39,9 @@ func main() {
 	}
 
 	broker := os.Args[1]
-	group := os.Args[2]
-	topics := os.Args[3:]
+	groupId := os.Args[2]
+	instanceId := os.Args[3]
+	topics := os.Args[4:]
 
 	sigchan := make(chan os.Signal, 1)
 	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
@@ -53,7 +54,8 @@ func main() {
 		// will return the IPv6 addresses first.
 		// You typically don't need to specify this configuration property.
 		"broker.address.family":           "v4",
-		"group.id":                        group,
+		"group.id":                        groupId,
+		"group.instance.id":               instanceId,
 		"session.timeout.ms":              6000,
 		"go.events.channel.enable":        false,
 		"go.application.rebalance.enable": true,
