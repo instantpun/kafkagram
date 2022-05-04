@@ -3,9 +3,9 @@
 COUNT=$1
 DEFAULT_COUNT=1
 
-if [ -z ${COUNT+x} ] || [ ${COUNT} < 1 ]; then
+if [[ -z ${COUNT+x} ]] ||[[ ${COUNT} -lt 1 ]]; then
     echo "ERROR: Cannot set COUNT to an integer less than 1."
-    echo "Setting COUNT to DEFAULT_COUNT."
+    echo "Setting COUNT to DEFAULT_COUNT=$DEFAULT_COUNT."
     COUNT=$DEFAULT_COUNT
 fi
 
