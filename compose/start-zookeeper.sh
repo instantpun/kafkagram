@@ -1,5 +1,5 @@
 #!/bin/bash
-podman stop zookeeper || echo "No zookeeper container found"
+podman stop zookeeper --ignore && echo "Recycling zookeeper container" || echo "No zookeeper container found"
 
 podman volume prune --force
 

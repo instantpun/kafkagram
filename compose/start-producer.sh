@@ -1,8 +1,4 @@
 #!/bin/bash
-podman stop go-producer || echo "No go-producer container found"
-
-podman volume prune --force
-
 podman run \
 --pod demo-cluster \
 --replace \

@@ -1,5 +1,5 @@
 #!/bin/bash
-podman stop kafka || echo "No kafka container found"
+podman stop kafka --ignore && echo "Recycling kafka container"  || echo "No kafka container found"
 
 podman volume prune --force
 

@@ -3,17 +3,21 @@
 COUNT=$1
 DEFAULT_COUNT=1
 
-if [ -z ${COUNT+x} || ${COUNT} <1 ]; then
+if [ -z ${COUNT+x} ] || [ ${COUNT} < 1 ]; then
     echo "ERROR: Cannot set COUNT to an integer less than 1."
     echo "Setting COUNT to DEFAULT_COUNT."
     COUNT=$DEFAULT_COUNT
 fi
 
-
-for i in {1..$COUNT}; do 
-    podman stop go-consumer$i && "Recycling go-consumer$i" || echo "No go-consumer$i container found"
-
-    podman volume prune --force
+# echo "$COUNT" > consumers.count
+for ((i=1;i<=COUNT;++i)); do
+    podman container exists "go-consumer$i"
+    EXISTS=$?
+    if [ $EXISTS == 0 ]; then
+        echo "Recycling container for go-consumer$i"
+    else
+        echo "No container for go-consumer$i. Starting new container"
+    fi
 
     podman run \
     --pod demo-cluster \

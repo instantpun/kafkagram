@@ -6,4 +6,5 @@ podman pod create \
 --publish 18080:18080 \
 --publish 28080:28080 \
 --infra \
+--replace \
 --name demo-cluster
