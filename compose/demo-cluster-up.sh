@@ -34,8 +34,10 @@ else
 fi
 
 #############################
+echo "Setting up broker..."
 ./start-provisioner.sh
 sleep 3
+echo "Setting up clients"
 ./start-consumers.sh 2
 ./start-producer.sh
 
